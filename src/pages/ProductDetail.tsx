@@ -7,10 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Heart, MapPin, MessageCircle, ShoppingCart, User } from "lucide-react";
 import { toast } from "sonner";
+import { useCart } from "@/contexts/CartContext";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === id);
+  const { addToCart } = useCart();
 
   if (!product) {
     return (
@@ -86,7 +88,7 @@ const ProductDetail = () => {
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Request Variation
               </Button>
-              <Button size="lg" variant="secondary" className="flex-1">
+              <Button size="lg" variant="secondary" className="flex-1" onClick={() => addToCart(product)}>
                 <ShoppingCart className="mr-2 h-5 w-5" />
                 Add to Cart
               </Button>

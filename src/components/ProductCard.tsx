@@ -1,20 +1,16 @@
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Heart, MapPin } from "lucide-react";
+import { Heart, MapPin, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCart } from "@/contexts/CartContext";
+import { Product } from "@/data/products";
 
-interface ProductCardProps {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  seller: string;
-  location: string;
-  category: string;
-}
+type ProductCardProps = Product;
 
-const ProductCard = ({ id, name, price, image, seller, location, category }: ProductCardProps) => {
+const ProductCard = (product: ProductCardProps) => {
+  const { addToCart } = useCart();
+  const { id, name, price, image, seller, location, category } = product;
   return (
     <Card className="group overflow-hidden transition-all hover:shadow-lg">
       <Link to={`/product/${id}`}>
@@ -52,9 +48,19 @@ const ProductCard = ({ id, name, price, image, seller, location, category }: Pro
       </CardContent>
       <CardFooter className="flex items-center justify-between p-4 pt-0">
         <span className="text-xl font-bold text-primary">₹{price}</span>
-        <Button size="sm" variant="secondary">
-          View Details
-        </Button>
+        <div className="flex gap-2">
+          <Button 
+            size="sm" 
+            variant="secondary"
+            onClick={(e) => {
+              e.preventDefault();
+              addToCart(product);
+            }}
+          >
+            <ShoppingCart className="h-4 w-4 mr-1" />
+            Add
+          </Button>
+        </div>
       </CardFooter>
     </Card>
   );
