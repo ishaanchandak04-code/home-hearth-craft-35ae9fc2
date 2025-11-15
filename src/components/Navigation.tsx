@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Heart, Menu, ShoppingBag, User } from "lucide-react";
 import { useState } from "react";
+import CartDrawer from "@/components/CartDrawer";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,6 +26,7 @@ const Navigation = () => {
             <Link to="/about" className="text-foreground/80 transition-colors hover:text-foreground">
               About
             </Link>
+            <CartDrawer />
             <Button variant="outline" size="sm">
               <User className="mr-2 h-4 w-4" />
               Sign In
@@ -68,6 +70,7 @@ const Navigation = () => {
               About
             </Link>
             <div className="flex gap-2">
+              <CartDrawer />
               <Button variant="outline" size="sm" className="flex-1">
                 <User className="mr-2 h-4 w-4" />
                 Sign In
