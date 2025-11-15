@@ -26,6 +26,12 @@ const Navigation = () => {
             <Link to="/about" className="text-foreground/80 transition-colors hover:text-foreground">
               About
             </Link>
+            <Link to="/merchant" className="text-foreground/80 transition-colors hover:text-foreground">
+              Merchant
+            </Link>
+            <Link to="/admin" className="text-foreground/80 transition-colors hover:text-foreground">
+              Admin
+            </Link>
             <CartDrawer />
             <Button variant="outline" size="sm">
               <User className="mr-2 h-4 w-4" />
@@ -68,6 +74,20 @@ const Navigation = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               About
+            </Link>
+            <Link
+              to="/merchant"
+              className="text-foreground/80 transition-colors hover:text-foreground"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Merchant
+            </Link>
+            <Link
+              to="/admin"
+              className="text-foreground/80 transition-colors hover:text-foreground"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Admin
             </Link>
             <div className="flex gap-2">
               <CartDrawer />
